@@ -38,11 +38,13 @@ This database will include information about departments, students, courses (and
     identify a course. However, course number uniquely identifies courses *within a
     department*.
 
-* Finally, we need to note which professors teach each course. Note that a course can be taught by more than one professor (that is, Professors Wu and Gravano both teach Introduction to Databases).
+* Finally, we need to note which professors teach each course. Note that a course can be taught by more than one professor (that is, Professors Wu and Gravano both teach Introduction to Databases), and instructors can teach multiple courses.
 
 * Assume that for a course to be offered, it has at least one student enrolled and has a professor. 
 
 * Finally, assume that a student can take courses “owned” by departments with which the student is not affiliated. And a student should be enrolled in at least one course.
+
+* State any other assumptions you make.
 
 **Your Task**: Render the university database in the version of the
 E/R model that we studied in class, with exactly the constraints and requirements
