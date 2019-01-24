@@ -40,7 +40,7 @@ This database will include information about departments, students, courses (and
 
 * Finally, we need to note which professors teach each course. Note that a course can be taught by more than one professor (that is, Professors Wu and Gravano both teach Introduction to Databases).
 
-* Assume that for a course to be offered during a term, it has at least one student enrolled. Also a course is offered at most once    during each term. In other words, a course cannot have multiple sections during one term. 
+* Assume that for a course to be offered, it has at least one student enrolled and has a professor. 
 
 * Finally, assume that a student can take courses “owned” by departments with which the student is not affiliated. And a student should be enrolled in at least one course.
 
