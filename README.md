@@ -3,7 +3,7 @@
 * Assigned: 1/24
 * Due:
     * Part 1: 1/31 10AM
-    * **Part 2: 2/12 10AM**
+    * **Part 2: 2/15 11:59PM** EXTENSION**
 * Value: 3.75% of your grade
 * Done and submitted individually (as with all the homeworks) **via [Gradescope](https://www.gradescope.com),  (Entry code for gradescope: M6JZ2X)**
 
