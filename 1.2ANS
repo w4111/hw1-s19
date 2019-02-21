@@ -40,7 +40,7 @@ CREATE TABLE Professor (
        p_name text,
        PRIMARY KEY(uni),
 );
-CREATE TABLE Offers (
+CREATE TABLE BelongsTo (
        o_id int,
        d_name text NOT NULL,
        c_number text NOT NULL,
