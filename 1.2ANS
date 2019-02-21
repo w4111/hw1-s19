@@ -57,5 +57,36 @@ CREATE TABLE EnrollsIn (
 CREATE TABLE TaughtBy (
        uni text REFERENCES Professor(uni),
        c_number int REFERENCES Course(c_number),
-       PRIMARY KEY (uni, c_number)
+       d_name text REFERENCES Department(d_name),
+       PRIMARY KEY (uni, c_number, d_name)
 );
+
+Comments:
+
+       We were not strict in exact syntax. There are other slightly different answers that are still correct.
+
+       For example, there are other ways to express the graduate/undergraduate ISA relationship.
+       Because the only attribute of a graduate or undergraduate student is whether they have a research field or concentration,
+       we also accepted the following formulation:
+
+       in the table student:
+
+       check(
+       (research field is NULL and concentration is NOT NULL) or (research field is NOT NULL and concentration is NULL),
+       check age>=18
+       ),
+
+       Adding DROP TABLE IF EXISTS before each CREATE TABLE statement is correct and accepted but is not necessary.
+
+       We accepted both text and varchar() for string fields.
+
+       Automatic half-point deduction for creating new entities and/or attributes that were not at all in the spec.
+
+       Using NOT NULL and check() are very useful to enforce constraints!
+
+Style/Best Practice:
+
+       Everything should generally be as readable as possible.
+       Avoid tables with extremely long names.
+       Do not have tables whose fields are all acronyms and not words.
+
