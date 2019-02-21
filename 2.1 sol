@@ -1,0 +1,61 @@
+CREATE TABLE Department (
+       d_name text,
+       d_address text,
+       PRIMARY KEY(d_name)
+);
+
+-- ISA
+CREATE TABLE Student (
+       uni text,
+       s_name text,
+       type text,
+       date_of_birth date,
+       d_name text REFERENCES Department(d_name) NOT NULL,
+       PRIMARY KEY(uni),
+       CHECK (type in ('graduate', 'undergraduate')),
+       CHECK (date_of_birth <= now() - interval '18 year')
+       CHECK(
+        ((SELECT COUNT(*) FROM EnrollsIn WHERE EnrollsIn.uni = uni) > 0)
+       )
+);
+CREATE TABLE Graduate (
+       uni text REFERENCES Student(uni),
+       research_field text,
+       PRIMARY KEY (uni)
+);
+CREATE TABLE Undergraduate (
+       uni text REFERENCES Student(uni),
+       concentration text,
+       PRIMARY KEY (uni)
+);
+CREATE TABLE Course (
+       c_number int,
+       c_capacity int,
+       c_name text,
+       d_name text REFERENCES Department(d_name) ON DELETE CASCADE,
+       PRIMARY KEY (d_name, c_number)
+);
+CREATE TABLE Professor (
+       uni text,
+       p_name text,
+       PRIMARY KEY(uni),
+);
+CREATE TABLE Offers (
+       o_id int,
+       d_name text NOT NULL,
+       c_number text NOT NULL,
+       FOREIGN KEY (d_name, c_number) REFERENCES Course(d_name, c_number),
+       FOREIGN KEY (name, address) REFERENCES Department(name, address),
+       UNIQUE(d_name, c_number, address),
+       PRIMARY KEY (o_id)
+);
+CREATE TABLE EnrollsIn (
+       uni text REFERENCES Student(uni),
+       o_id int REFERENCES Offers(o_id),
+       PRIMARY KEY (uni, o_id)
+);
+CREATE TABLE TaughtBy (
+       uni text REFERENCES Professor(uni),
+       c_number int REFERENCES Course(c_number),
+       PRIMARY KEY (uni, c_number)
+);
