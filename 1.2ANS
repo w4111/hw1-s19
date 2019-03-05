@@ -42,10 +42,12 @@ CREATE TABLE Professor (
 );
 CREATE TABLE BelongsTo (
        o_id int,
-       d_name text NOT NULL,
-       c_number text NOT NULL,
-       FOREIGN KEY (d_name, c_number) REFERENCES Course(d_name, c_number),
-       FOREIGN KEY (name, address) REFERENCES Department(name, address),
+       d_name int NOT NULL,
+       c_number int NOT NULL,
+       c_name text NOT NULL,
+       address text
+       FOREIGN KEY (c_name, c_number) REFERENCES Course(c_name, c_number),
+       FOREIGN KEY (d_name, address) REFERENCES Department(d_name, address),
        UNIQUE(d_name, c_number, address),
        PRIMARY KEY (o_id)
 );
