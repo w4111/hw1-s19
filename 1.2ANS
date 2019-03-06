@@ -47,7 +47,7 @@ CREATE TABLE BelongsTo (
        c_name text NOT NULL,
        address text
        FOREIGN KEY (c_name, c_number) REFERENCES Course(c_name, c_number),
-       FOREIGN KEY (d_name, address) REFERENCES Department(d_name, address),
+       FOREIGN KEY (d_name, address) REFERENCES Department(d_name, d_address),
        UNIQUE(d_name, c_number, address),
        PRIMARY KEY (o_id)
 );
@@ -58,9 +58,10 @@ CREATE TABLE EnrollsIn (
 );
 CREATE TABLE TaughtBy (
        uni text REFERENCES Professor(uni),
-       c_number int REFERENCES Course(c_number),
-       d_name text REFERENCES Department(d_name),
+       c_number int,
+       d_name text,
        PRIMARY KEY (uni, c_number, d_name)
+       FOREIGN KEY (c_number, d_name) REFERENCES Course(c_number, d_name)
 );
 
 Comments:
